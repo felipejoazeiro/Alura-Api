@@ -37,7 +37,7 @@ public class Usuario implements UserDetails{
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-@Override
+    @Override
     public String getPassword() {
         return senha;
     }
