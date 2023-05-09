@@ -2,6 +2,10 @@ package med.voll.api.domain.consulta;
 
 import java.time.LocalDateTime;
 
-public record DadosDetalhamentoConsulta(Long id, Long idMedico, Long idPaciente, LocalDateTime data) {
-    
+import com.fasterxml.jackson.annotation.JsonAlias;
+
+public record DadosDetalhamentoConsulta(Long id, 
+                                        @JsonAlias({"id_medico", "medico_id"}) Long idMedico, 
+                                        @JsonAlias({"id_paciente", "paciente_id"}) Long idPaciente, 
+                                        LocalDateTime data) {
 }
