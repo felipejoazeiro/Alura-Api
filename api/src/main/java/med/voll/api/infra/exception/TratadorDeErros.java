@@ -1,6 +1,7 @@
 package med.voll.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import med.voll.api.domain.ValidacaoException;
 
 import java.nio.file.AccessDeniedException;
 
@@ -58,6 +59,11 @@ public class TratadorDeErros {
         public DadosErroValidacao(FieldError erro) {
             this(erro.getField(), erro.getDefaultMessage());
         }
+    }
+
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity tratarErroRegraDeNegocio(ValidacaoException ex){
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
 }

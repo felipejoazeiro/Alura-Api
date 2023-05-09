@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import med.voll.api.domain.ValidacaoException;
-import med.voll.api.domain.consulta.AgendamentoDeConsultas;
+import med.voll.api.domain.consulta.AgendaDeConsulta;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
 
@@ -21,13 +21,13 @@ import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
 public class ConsultaController {
 
     @Autowired
-    private AgendamentoDeConsultas agenda;
+    private AgendaDeConsulta agenda;
 
     @PostMapping
     @Transactional
     public ResponseEntity agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) throws ValidacaoException {
-        agenda.agendar(dados);
-        return ResponseEntity.ok(new DadosDetalhamentoConsulta(null, null, null, null));
+        var dto = agenda.agendar(dados);
+        return ResponseEntity.ok(dto);
     }
 
 
