@@ -14,8 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("medicos")
+@SecurityRequirement(name="bearer-key")
 public class MedicoController {
 
     @Autowired
